@@ -1,4 +1,13 @@
 //Text
+.t-text-size {
+    font-size: 1.6rem;
+    @include lg-screen {
+        font-size: 1.333rem;
+    }
+    @include xl-screen {
+        font-size: 1rem;
+    }
+}
 .t-text-primary {
     color: $primary !important;
 }
@@ -10,6 +19,11 @@
 }
 .t-text-lighter {
     color: $footer-text;
+}
+
+//Border
+.t-border-light {
+    border: 2px solid rgba($white, .5);
 }
 
 //Background

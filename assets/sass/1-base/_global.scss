@@ -78,7 +78,8 @@ button {
         outline: none !important;
     }
 }
-.btn:focus, .btn.focus {
+.btn:focus,
+.btn.focus {
     outline: none;
     box-shadow: none;
 }

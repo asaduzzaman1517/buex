@@ -2,12 +2,27 @@
     "use strict";
 
     $(document).ready(function() {
+        /**-----------------------------
+         *  Smooth scroll to section
+         * ---------------------------*/
+        $("a[href^='#']").click(function(e) {
+            e.preventDefault();
 
+            var position = $($(this).attr("href")).offset().top;
+
+            $("body, html").animate(
+                {
+                    scrollTop: position
+                },
+                800,
+                "linear" 
+            );
+        });
         /**-----------------------------
          *  Video Popup
          * ---------------------------*/
         var videoPop = $(".cdr-video__button");
-        if(videoPop.length) {
+        if (videoPop.length) {
             videoPop.magnificPopup({
                 items: {
                     src: "https://www.youtube.com/watch?v=kshIWIc15yg"
@@ -36,12 +51,18 @@
          * ---------------------------*/
 
         var testimonialSlider = $(".cdr-testimonial__slider");
-        if(testimonialSlider.length) {
+        if (testimonialSlider.length) {
             testimonialSlider.slick({
                 slidesToShow: 1,
                 mobileFirst: true,
                 arrows: false,
                 responsive: [
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
                     {
                         breakpoint: 991,
                         settings: {
@@ -51,7 +72,7 @@
                     {
                         breakpoint: 1199,
                         settings: {
-                            slidesToShow: 3,
+                            slidesToShow: 3
                             // centerMode: true
                         }
                     }
@@ -63,11 +84,13 @@
          *  Navbar fix
          * ---------------------------*/
 
-        $(document).on("click", ".navbar-nav li.menu-item-has-children>a", function(
-            e
-        ) {
-            e.preventDefault();
-        });
+        $(document).on(
+            "click",
+            ".navbar-nav li.menu-item-has-children>a",
+            function(e) {
+                e.preventDefault();
+            }
+        );
 
         /*------------------
             back to top
@@ -119,7 +142,5 @@
             e.preventDefault();
             $("#preloader").fadeOut(0);
         });
-
     });
-
 })(jQuery);
